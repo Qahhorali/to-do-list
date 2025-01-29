@@ -28,21 +28,52 @@ function toggleModal(modal, isActive){
 
 let currentItem = null
 // delate task
-function delateTask() {
-
+function delateOpenModal(target) {
+    currentItem = target.closest('li')
+    task.textContent = currentItem.textContent
+    if(currentItem){
+        toggleModal(delateModal, true)
+    }
 }
+
+delateItem.addEventListener('click', () => {
+    if (currentItem){
+        currentItem.remove()
+        toggleModal(delateModal, false)
+        message.textContent = `${currentItem.textContent} muvaffaqiyatli ochirildi`
+        message.classList.add('active')
+        setTimeout(() => message.textContent = '', 3000)
+    }
+})
+
+closeModalItem.addEventListener('click', () => toggleModal(delateModal, false))
+
 
 // edit task
-function editTask(){
+function editOpenModal(target){
+    currentItem = target.closest('li')
 
+    if(currentItem){
+        toggleModal(editModal, true)
+        editInput.value = currentItem.textContent.trim()
+    }
 }
 
+saveModalItem.addEventListener('click', () =>{
+    const newValue = editInput.value.trim()
+    currentItem.querySelector('.name').textContent = newValue
+    toggleModal(editModal, false)
+    message.textContent = `muvaffaqiyatli taxrirlandi`
+    message.classList.add('active')
+    setTimeout(() => message.textContent = '', 3000)
+})
+closeModalEdit.addEventListener('click', () => toggleModal(editModal, false))
 ulItems.addEventListener('click', (e) =>{
     const target = e.target
     if(target.classList.contains('fa-trash-can')){
-        toggleModal(delateTask, true)
+        delateOpenModal(target)
     }else if(target.classList.contains('fa-pen-to-square')){
-        toggleModal(editTask, true)
+        editOpenModal(target)
     }
 })
 
@@ -74,6 +105,13 @@ addItem.addEventListener('click', () => {
     taskInput.value = ''
 })
 
+document.addEventListener('keydown', (e) => {
+    if(e.key == 'Escape' && delateModal)
+        toggleModal(delateModal, false)
+    if(e.key == 'Escape' && editModal){
+        toggleModal(editModal, false)
+    }
+})
 
 
 
