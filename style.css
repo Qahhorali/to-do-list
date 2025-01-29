@@ -1,0 +1,214 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;800;900&display=swap);
+
+body {
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container{
+    width: 100%;
+    height: 100vh;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+.titles{
+    margin-top: 100px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+    display: flex;
+    padding: 10px;
+    gap: 20px;
+    align-items: center;
+}
+.title{
+    font-size: 50px;
+}
+.title-logo{
+    width: 70px;
+    height: 70px;
+}
+.input-form{
+    padding-top: 40px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+#task-input{
+    border: 1px solid #aaa;
+    height: 50px;
+    width: 600px;
+    border-radius: 24px;
+    font-size: 18px;
+    padding-left: 10px;
+    color: #333;
+}
+#task-input:focus{
+    outline: none;
+}
+.add-btn{
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    right: 0;
+}
+.btn-icon{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #EF937C;
+}
+.btn-icon i{
+    font-size: 28px;
+    color: #333;
+}
+ul{
+    width: 100%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow: auto;
+    align-items: center;
+}
+li{
+    width: 600px;
+    width: 100%;
+    height: 40px;
+    list-style: none;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    cursor: pointer;
+}
+.container .message{
+    text-align: center;
+    font-size: 22px;
+    display: none;
+    transition: 0.3s ease;
+}
+.container .message.active{
+    color: #32cd32;
+    display: block;
+}
+.message.error{
+    display: flex;
+    color: red;
+}
+li .name{
+    width: 80%;
+    color: #252525;
+    font-size: 18px;
+    font-weight: 500;
+    user-select: none;
+}
+li.complated .name{
+    text-decoration: line-through;
+    color: gray;
+}
+.container.active{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+}
+.container .action i:nth-child(1){
+    font-size: 20px;
+    color: #ffc400;
+}
+.container .action i:nth-child(2){
+    font-size: 20px;
+    color: red;
+}
+.overlay.active{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+.delate-modal,
+.edit-modal{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 400px;
+    width: 100%;
+    height: auto;
+    padding: 10px 20px;
+    border-radius: 15px;
+    background-color: white;
+    z-index: 100;
+    display: none;
+    flex-direction: column;
+    gap: 20px;
+}
+.delate-modal.active,
+.edit-modal.active{
+    display: flex;
+}
+.delate-modal .action,
+.edit-modal .action{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 20px;
+}
+.delate-modal .action #close-modal-item,
+.edit-modal .action #close-modal-edit{
+    background-color: #6565ff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+.edit-modal .action #save-modal-item{
+    background-color: #32cd32;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.delate-modal .action #delate-modal-item,
+.edit-modal .action #delate-modal-item{
+    background-color: red;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+.modal-title{
+    font-size: 32px;
+    font-weight: 600;
+}
+.edit-modal .edit-input{
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    outline: none;
+    font-size: 18px;
+}
