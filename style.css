@@ -21,7 +21,7 @@ body {
     gap: 40px;
 }
 .titles{
-    margin-top: 100px;
+    margin-top: 60px;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
     display: flex;
     padding: 10px;
@@ -211,4 +211,13 @@ li.complated .name{
     padding: 10px;
     outline: none;
     font-size: 18px;
+}
+#clock{
+    padding-top: 40px;
+    font-size: 40px;
+    color: #252525;
+}
+#date{
+    font-size: 30px;
+    color: #252525;
 }

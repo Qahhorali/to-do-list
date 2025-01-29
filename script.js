@@ -14,6 +14,34 @@ const closeModalEdit = document.getElementById('close-modal-edit')
 const editInput = document.getElementById('edit-input')
 const saveModalItem = document.getElementById('save-modal-item')
 
+
+
+function updateClock() {
+    const dateElement = document.getElementById('date')
+    const clockElement = document.getElementById('clock'); 
+    const now = new Date(); 
+    const hours = String(now.getHours()).padStart(2, '0'); 
+    const minutes = String(now.getMinutes()).padStart(2, '0'); 
+    const seconds = String(now.getSeconds()).padStart(2, '0'); 
+
+    clockElement.textContent = `${hours}:${minutes}:${seconds}`;
+    const weekdays = ['Yakshanba', 'Dushanba', 'Seshanba', 'Chorshanba', 'Payshanba', 'Juma', 'Shanba'];
+    const dayName = weekdays[now.getDay()];
+    const fullDate = now.toLocaleDateString('uz-UZ', {
+        year: 'numeric',
+        month: 'numeric',
+        day: 'numeric',
+    });
+    dateElement.textContent = `${dayName}, ${fullDate}`;
+
+}
+
+setInterval(updateClock, 1000);
+
+updateClock();
+
+
+
 // toggle modal
 function toggleModal(modal, isActive){
     if(isActive){
@@ -112,7 +140,3 @@ document.addEventListener('keydown', (e) => {
         toggleModal(editModal, false)
     }
 })
-
-
-
-
